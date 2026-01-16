@@ -1,0 +1,46 @@
+
+.containerTitle{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0;
+  margin: 0;
+  background-color: rgba(68, 98, 251, 1);
+  width: 100%;
+  height: 10%;
+}
+.title{
+  color: white;
+  margin-left: 40%;
+}
+.menuButton{
+  align-self: center;
+  font-size: 1.8rem;
+  color: white;
+}
+.mainContentContainer{
+  max-width: 70%;
+}
+.searchContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 7%;
+  padding-right: 3%;
+  height: 3rem;
+  font-size: 1.5rem;
+}
+#searchBar{
+  width: 40%;
+  height: 70%;
+  border: 2px solid #ccc;
+  font-size: 1rem;
+  padding-left: 1%;
+}
+.listContainer{
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-left: 7%;
+}

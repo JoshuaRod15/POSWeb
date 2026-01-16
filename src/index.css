@@ -1,0 +1,57 @@
+/* 1. Box sizing mejorado para todos los elementos */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Reset de márgenes y paddings por defecto */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. Evitar que el scroll se rompa y mejorar renderizado de fuentes */
+html, body {
+  height: 100%;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #f8fafc; /* Color claro ideal para POS */
+  color: #1e293b;
+}
+
+/* 4. Imágenes y archivos multimedia responsivos */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 5. Reset de tipografía para formularios (heredar del body) */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 6. Evitar que el texto se salga de los contenedores */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 7. Eliminar estilos de lista (útil para menús de navegación) */
+ul, ol {
+  list-style: none;
+}
+
+/* 8. Botones clicables por defecto */
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* 9. Enlaces limpios */
+a {
+  text-decoration: none;
+  color: inherit;
+}

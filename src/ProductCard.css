@@ -1,0 +1,19 @@
+.cardContainer{
+    background-color: rgb(215, 211, 211);
+    display: flex;
+    flex-direction: column;
+    width: 17%;
+    height: 10rem;
+    padding-top: 1%;
+    border-radius: 10%;
+}
+
+.nameText{
+    color: black;
+    font-size: 1rem;
+}
+
+.priceText{
+    color: black;
+    padding-top: 2rem;
+}
