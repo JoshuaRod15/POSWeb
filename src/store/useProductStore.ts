@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-interface Product {
+export interface Product {
   SKU:string,
   id:number,
   image:string | null,
@@ -15,6 +15,8 @@ interface ProductState {
     isLoading: boolean;
     setProducts: (products: Product[]) => void;
     setLoading: (status: boolean) => void;
+    addProduct: (product: Product) => void;
+    updateProduct: (id: number, updatedData: Partial<Product>) => void;
 }
 
 export const useProductsStore = create<ProductState>((set) => ({
@@ -22,5 +24,15 @@ export const useProductsStore = create<ProductState>((set) => ({
     cartTotal: 0,
     isLoading: false,
     setProducts: (products) => set({products, isLoading: false}),
-    setLoading: (status) => set({isLoading: status})
+    setLoading: (status) => set({isLoading: status}),
+    addProduct: (product) => 
+      set((state) => ({
+        products: [product, ...state.products],
+      })),
+    updateProduct: (id, updatedData) => 
+      set((state) => ({
+        products: state.products.map((p) => 
+        p.id === id? {...p, ...updatedData} : p
+        ),
+      }))
 }))

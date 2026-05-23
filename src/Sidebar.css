@@ -1,12 +1,15 @@
 .modalOverlay {
     position: fixed;
     top: 0;
-    left: 0;
+    left: 0;    
     width: 100vw;
-    height: 100vw;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
     display: flex;
+    justify-content: flex-start; /* ASEGURA que empiece al inicio (izquierda) */
+    align-items: stretch;
+    
 }
 .sideMenu{
     width: 300px;
@@ -45,3 +48,8 @@
     font-size: 1.1rem;
     transition: background 0.2s;
   }
+.closeSesionContainer{
+    width: 100%;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}

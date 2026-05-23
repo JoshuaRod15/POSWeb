@@ -1,0 +1,117 @@
+.edit-page-container {
+    padding: 20px 5%;
+    width: 100%;
+}
+
+.header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.searchAndCleanContainer {
+    display: flex;
+    gap: 10px;
+    width: 400px;
+}
+
+#searchBar {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+#searchBar:focus {
+    border-color: #4462fb;
+    outline: none;
+}
+
+.listContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card-wrapper {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.card-wrapper:hover {
+    transform: translateY(-5px);
+}
+
+.scanner-hidden-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Estilos del Modal */
+.modalEditOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.editModal {
+    background: white;
+    width: 95%;
+    max-width: 500px;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.form-row-double {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.saleTypeButton {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    background: #f8fafc;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.saleTypeButton.active {
+    background: #4462fb;
+    color: white;
+    border-color: #4462fb;
+}
+
+.modalButtons {
+    display: flex;
+    gap: 12px;
+    margin-top: 30px;
+    height: 3rem;
+}
+
+.saveButton {
+    background: #22c55e;
+    color: white;
+    flex: 1;
+    border-radius: 1rem;
+}
+
+.cancelButton {
+    background: #f1f5f9;
+    color: #64748b;
+    flex: 1;
+    border-radius: 1rem;
+}

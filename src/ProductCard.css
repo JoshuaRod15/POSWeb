@@ -2,10 +2,12 @@
     background-color: rgb(215, 211, 211);
     display: flex;
     flex-direction: column;
-    width: 17%;
+    width: 100%;
     height: 10rem;
     padding-top: 1%;
     border-radius: 10%;
+    content-visibility: auto;
+    contain-intrinsic-size: 100px 300px;
 }
 
 .nameText{

@@ -1,12 +1,20 @@
+import { Link } from 'react-router-dom';
 import './Sidebar.css'
 
 interface SideBarProps {
     isOpen: boolean;
     onClose: () => void;
+    setAuth: (auth: boolean) => void;
 }
 
-export const Sidebar = ({ isOpen, onClose }: SideBarProps) => {
+export const Sidebar = ({ isOpen, onClose, setAuth }: SideBarProps) => {
     if(!isOpen) return null;
+
+    const handleLogOut = () => {
+        localStorage.removeItem('token')
+        setAuth(false)
+        onClose()
+    }
 
     return(
         <div onClick={onClose} className="modalOverlay">
@@ -19,16 +27,22 @@ export const Sidebar = ({ isOpen, onClose }: SideBarProps) => {
                 </div>
 
                 <nav className='menuItems'>
-                    <button>
+                    <Link to={"/"} onClick={onClose}>
                         <span>🏠</span> Inicio
-                    </button>
-                    <button>
+                    </Link>
+                    <Link to={"/agregar-producto"} onClick={onClose}>
                         <span>➕</span> Agregar Producto
-                    </button>
-                    <button>
+                    </Link>
+                    <Link to={"/editar-producto"}>
                         <span>✏️</span> Editar Producto
-                    </button>
+                    </Link>
                 </nav>
+
+                <div className='closeSesionContainer'>
+                    <button onClick={handleLogOut} className='closeSesionButton'>
+                        Cerrar Sesion
+                    </button>
+                </div>
             </div>
         </div>
     )
