@@ -36,6 +36,9 @@ export const Sidebar = ({ isOpen, onClose, setAuth }: SideBarProps) => {
                     <Link to={"/editar-producto"}>
                         <span>✏️</span> Editar Producto
                     </Link>
+                    <Link to={"/agregar-empleado"}>
+                        <span>✏️</span> Agregar Empleado
+                    </Link>
                 </nav>
 
                 <div className='closeSesionContainer'>

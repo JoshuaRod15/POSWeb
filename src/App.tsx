@@ -7,6 +7,7 @@ import axios from "axios";
 import { getProducts } from "./services/productService";
 import EditProduct from "./EditProduct";
 import Login from "./Login";
+import AddEmployee from "./AddEmployee"
 
 function App(){
   const [isOpen, setIsOpen] = useState(false)
@@ -60,6 +61,7 @@ function App(){
         <Route path="/" element={<Ventas />} />
         <Route path="/agregar-producto" element={<AddProduct />} />
         <Route path="/editar-producto" element={<EditProduct />}/>
+        <Route path="/agregar-empleado" element={<AddEmployee />}/>
         <Route path="/login" element={<Login setAuth={() => false}/>}/>
       </Routes>
       </>)}
