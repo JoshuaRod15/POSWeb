@@ -13,6 +13,7 @@ export default function EditProduct() {
     const [editModalVisible, setEditModalVisible] = useState(false);
     const [isSaving, setIsSaving] = useState(false);
     const scannerInputRef = useRef<HTMLInputElement>(null);
+    const searchBarInputRef = useRef<HTMLInputElement>(null);
 
     // Estado unificado para el formulario
     const [form, setForm] = useState({
@@ -25,13 +26,19 @@ export default function EditProduct() {
     });
 
     const focusScanner = useCallback(() => {
-        // Pequeño delay para asegurar que el DOM esté listo tras cerrar modales
-        setTimeout(() => scannerInputRef.current?.focus(), 100);
-    }, []);
+        if (!editModalVisible) {
+            scannerInputRef.current?.focus();
+        }
+    }, [editModalVisible]);
+
+    const focusSearchBar = useCallback(() => {
+        searchBarInputRef.current?.focus()
+        searchBarInputRef.current?.select()   
+    }, [])
 
     useEffect(() => {
-        focusScanner();
-    }, [focusScanner, editModalVisible]); // Re-enfoca cuando cambia la visibilidad del modal
+        focusScanner()
+    }, [editModalVisible, focusScanner]);
 
     const openEditModal = (producto: Product) => {
         setForm({
@@ -46,7 +53,19 @@ export default function EditProduct() {
     };
 
     const handleScannerKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        console.log("Aqui si");
+        
+        if (e.key === 'F1') {
+            console.log("Si entra");
+            
+            e.preventDefault()
+            focusSearchBar()
+            return
+        }
+
         if(e.key === 'Enter') {
+            console.log("Aqui enter");
+            
             const code = e.currentTarget.value.trim();
             if(!code) return;
             
@@ -108,6 +127,7 @@ export default function EditProduct() {
                 <div className='searchAndCleanContainer'>
                     <input 
                         type='text'
+                        ref={searchBarInputRef}
                         id="searchBar"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}

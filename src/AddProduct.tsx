@@ -1,5 +1,5 @@
 import './AddProduct.css'
-import { useState } from "react"
+import { useEffect, useRef, useState} from "react"
 import { useProductsStore } from "./store/useProductStore"
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
@@ -16,12 +16,21 @@ export default function AddProduct() {
 
     const [touched, setTouched] = useState<{ [key: string]: boolean }>({});
     const [isSaving, setIsSaving] = useState(false);
+    const nameInputRef = useRef<HTMLInputElement>(null)
 
     const allProducts = useProductsStore((state) => state.products);
     const API_URL = import.meta.env.VITE_API_URL;
     const token = localStorage.getItem("token");
 
     const addProductToStore = useProductsStore((state) => state.addProduct)
+
+    const focusName = () => {
+        nameInputRef.current?.focus()
+    }
+
+    useEffect(() => {
+        focusName()
+    },[])
 
     // Validaciones Centralizadas
     const getErrors = () => {
@@ -98,6 +107,7 @@ export default function AddProduct() {
                                 type="text" 
                                 className={`form-input ${(touched.name && errors.name) ? 'inputError' : ''}`}
                                 value={form.name} 
+                                ref={nameInputRef}
                                 onChange={handleChange}
                                 onBlur={() => handleBlur('name')}
                                 placeholder="Ej: Coca Cola 600ml"

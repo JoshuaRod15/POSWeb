@@ -1,7 +1,7 @@
 
 import './Ventas.css'
 
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState, useCallback  } from 'react'
 import { ProductCard } from './ProductCard'
 import { useProductsStore } from './store/useProductStore'
 import { useCartStore } from './store/useCartStore'
@@ -16,9 +16,15 @@ function Ventas() {
   const cart = useCartStore(state => state.cart)
   const total = useCartStore(state => state.cartTotal);
   const scannerInputRef = useRef<HTMLInputElement>(null);
+  const searchBarInputRef = useRef<HTMLInputElement>(null);
   const addToCart = useCartStore((state) => state.addToCart)
   const clearCart = useCartStore((state) => state.clearCart)
   //const navigate = useNavigate();
+
+  const focusSearchBar = useCallback(() => {
+    searchBarInputRef.current?.focus()
+    searchBarInputRef.current?.select()   
+}, [])
 
   const focusScanner = () => {
     if (!isPayModalOpen) {
@@ -44,6 +50,13 @@ function Ventas() {
   }, [isPayModalOpen])
 
   const handleScannerKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    
+    if (e.key === 'F1') {
+        e.preventDefault()
+        focusSearchBar()
+        return
+    } 
+
     if(e.key  === 'Enter') {
       const code = e.currentTarget.value.trim();
       if(!code) return;
@@ -119,8 +132,16 @@ function Ventas() {
                 <input 
                     type='text'
                     id="searchBar"
+                    ref={searchBarInputRef}
                     value={search}
                     onChange={handleSearch}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Escape') {
+                        e.preventDefault()
+                        setSearch("")
+                        focusScanner()
+                      }
+                    }}
                     placeholder='Buscar un producto...'
                 />
                 <button className='cleanButton'

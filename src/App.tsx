@@ -60,7 +60,7 @@ function App(){
       <Routes>
         <Route path="/" element={<Ventas />} />
         <Route path="/agregar-producto" element={<AddProduct />} />
-        <Route path="/editar-producto" element={<EditProduct />}/>
+        <Route path="/editar-producto" element={<EditProduct />} />
         <Route path="/agregar-empleado" element={<AddEmployee />}/>
         <Route path="/login" element={<Login setAuth={() => false}/>}/>
       </Routes>

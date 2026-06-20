@@ -8,16 +8,16 @@ export default function AltaEmpleado() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Recuperas el token del admin que guardaste en el login (LocalStorage, Context, etc.)
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsImlhdCI6MTc4MDc3MTA3MX0.brE9C-WEkqA6hPLKUwcl4ixH43IPaiy87EvmrFTQrKs'
+    const token = localStorage.getItem("token");
+    const API_URL = import.meta.env.VITE_API_URL;
 
     try {
       const respuesta = await axios.post(
-        'http://localhost:3000/user/createEmployee', // Tu ruta local
+        `${API_URL}/user/createEmployee`,
         formData,
         {
           headers: {
-            Authorization: `Bearer ${token}` // 👈 Clave para que el JwtAuthGuard te deje pasar
+            Authorization: `Bearer ${token}`
           }
         }
       );
